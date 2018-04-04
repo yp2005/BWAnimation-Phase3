@@ -1,0 +1,23 @@
+D .
+D common
+P 5A05FAAE configBG.png
+P BC4E3960 img_radio_checked.png
+P 838697A5 img_radio_notCheck.png
+P EF605369 replay-abled.png
+P 7F8CE93B replay-disabled.png
+P 6F2E1E3C setting.png
+D CutWatermelon
+P CF39673C knife.png
+R 45989D11 mainBG.png
+P 82916196 start.png
+P 2462E047 watermelon-left-cuted1.png
+P 9A5C75BF watermelon-left-cuted2.png
+P E4B6A1E8 watermelon-left.png
+P B60E0AB3 watermelon-right-cuted1.png
+P 3E9B292C watermelon-right-cuted2.png
+P CB7EE950 watermelon-right.png
+D template
+D template/ButtonTab
+P AE499BA2 btn_LargeTabButton_Middle.png
+D template/Text
+R 1E74727C TextBox.png
