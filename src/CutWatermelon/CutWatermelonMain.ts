@@ -64,7 +64,7 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
                 this.watermelon.word.pivotY = 33;
                 
                 this.watermelon.word.x = this.watermelon.width / 2;
-                this.watermelon.word.y = 205;
+                this.watermelon.word.y = 190;
             }
             else { // 没有单词了结束游戏
                 this.replayBtn.skin = "common/replay-abled.png";
@@ -82,7 +82,7 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
                 this.watermelon.word.pivotX = this.watermelon.word.width / 2;
                 this.watermelon.word.pivotY = 33;
                 this.watermelon.word.x = this.watermelon.width / 2;
-                this.watermelon.word.y = 205;
+                this.watermelon.word.y = 190;
                 return;
             }
             // 随机一个位置

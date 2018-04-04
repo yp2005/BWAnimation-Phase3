@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":23,
+    "selectedBox":4,
+    "selecteID":16,
     "props":{"width":1024,"sceneColor":"#ffffff","height":768},
     "nodeParent":-1,
     "label":"View",
@@ -81,7 +81,7 @@
                 {
                     "x":30,
                     "type":"TextInput",
-                    "props":{"y":182,"x":641,"width":286,"name":"words","height":31,"fontSize":16,"font":"FF","color":"#3b3232"},
+                    "props":{"y":179,"x":641,"width":286,"name":"words","height":31,"fontSize":18,"font":"FF","color":"#3b3232"},
                     "nodeParent":4,
                     "label":"TextInput(words)",
                     "isDirectory":false,
@@ -146,7 +146,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":68,"x":627,"width":315,"skin":"template/Text/TextBox.png","height":39},
+                    "props":{"y":65,"x":627,"width":315,"skin":"template/Text/TextBox.png","height":39},
                     "nodeParent":4,
                     "label":"Image",
                     "isDirectory":false,
@@ -159,7 +159,7 @@
                 {
                     "x":30,
                     "type":"TextInput",
-                    "props":{"y":73,"x":642,"width":286,"name":"fruitsPic","height":31,"fontSize":16,"font":"FF","color":"#3b3232"},
+                    "props":{"y":73,"x":642,"width":286,"name":"fruitsPic","height":31,"fontSize":18,"font":"FF","color":"#3b3232"},
                     "nodeParent":4,
                     "label":"TextInput(fruitsPic)",
                     "isDirectory":false,
@@ -182,7 +182,7 @@
                     "child":[
                         ]
                 }],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,
