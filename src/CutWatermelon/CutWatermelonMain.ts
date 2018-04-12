@@ -14,6 +14,10 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
         if(CutWatermelon.gameConfig.gameModel) {
             this.setting.visible = false;    
         }
+        this.bg.skin = "CutWatermelon/" + CutWatermelon.gameConfig.backgroundPic;
+        this.start.skin = "CutWatermelon/" + CutWatermelon.gameConfig.startPic;
+        this.start.centerX = 0;
+        this.start.centerY = 0;
     }
 
     //显示提示
@@ -51,7 +55,7 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
 
     // 显示西瓜
     private showWaterMelon() {
-        this.watermelon.start.visible = false;
+        this.start.visible = false;
         if(this.watermelon.cuted) { // 西瓜被切开了换下一个西瓜
             // 随机一个单词
             if(this.words.length > 0) {
@@ -72,17 +76,16 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
                 this.watermelon.x = (1024 - this.watermelon.width) / 2;
                 this.watermelon.y = (768 - this.watermelon.height) / 2;
                 this.watermelon.picture.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.left.notCuted;
-                this.watermelon.pictureCuted1.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.left.cuted1;
-                this.watermelon.pictureCuted2.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.left.cuted2;
+                this.watermelon.pictureCuted.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.left.cuted;
                 this.watermelon.state = "left";
-                this.watermelon.word.rotation = -30;
+                this.watermelon.word.rotation = -40;
                 let word = "Well Done";
                 this.watermelon.word.text = word;
                 this.watermelon.word.width = 30 * word.length + 20;
                 this.watermelon.word.pivotX = this.watermelon.word.width / 2;
                 this.watermelon.word.pivotY = 33;
                 this.watermelon.word.x = this.watermelon.width / 2;
-                this.watermelon.word.y = 190;
+                this.watermelon.word.y = 186;
                 return;
             }
             // 随机一个位置
@@ -90,20 +93,17 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
             // 相邻两次西瓜不同
             if(this.watermelon.state == "left") {
                 this.watermelon.picture.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.right.notCuted;
-                this.watermelon.pictureCuted1.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.right.cuted1;
-                this.watermelon.pictureCuted2.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.right.cuted2;
+                this.watermelon.pictureCuted.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.right.cuted;
                 this.watermelon.state = "right";
             }
             else {
                 this.watermelon.picture.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.left.notCuted;
-                this.watermelon.pictureCuted1.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.left.cuted1;
-                this.watermelon.pictureCuted2.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.left.cuted2;
+                this.watermelon.pictureCuted.skin = "CutWatermelon/" + CutWatermelon.gameConfig.fruitsPic.left.cuted;
                 this.watermelon.state = "left";
             }
             this.watermelon.word.visible = false;
             this.watermelon.picture.visible = true;
-            this.watermelon.pictureCuted1.visible = false;
-            this.watermelon.pictureCuted2.visible = false;
+            this.watermelon.pictureCuted.visible = false;
             this.watermelon.cuted = false;
         }
         else { // 切开西瓜
@@ -111,38 +111,32 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
             this.watermelon.knife.visible = true;
             if(this.watermelon.state == "left") {
                 this.watermelon.knife.rotation = 0;
-                this.watermelon.knife.x = -83 - 400;
-                this.watermelon.knife.y = 56 + this.watermelon.knife.height / this.watermelon.knife.width * 400;
-                Laya.Tween.to(this.watermelon.knife, {x: -83 + 400, y: 56 - this.watermelon.knife.height / this.watermelon.knife.width * 400}, 300, null, Laya.Handler.create(this, function() {
+                this.watermelon.knife.x = 30 - 400;
+                this.watermelon.knife.y = 68 + this.watermelon.knife.height / this.watermelon.knife.width * 400;
+                Laya.SoundManager.playSound("res/audio/cut-watermelon.mp3", 1);
+                Laya.Tween.to(this.watermelon.knife, {x: 30 + 400, y: 68 - this.watermelon.knife.height / this.watermelon.knife.width * 400}, 300, null, Laya.Handler.create(this, function() {
                     this.watermelon.picture.visible = false;
-                    this.watermelon.pictureCuted1.visible = true;
+                    this.watermelon.pictureCuted.visible = true;
                     this.watermelon.cuted = true;
-                    this.watermelon.word.rotation = -30;
+                    this.watermelon.word.rotation = -40;
                     this.watermelon.word.visible = true;
                     this.watermelon.knife.visible = false;
-                    Laya.timer.once(150, this, function() {
-                        this.watermelon.pictureCuted1.visible = false;
-                        this.watermelon.pictureCuted2.visible = true;
-                        this.on(Laya.Event.CLICK, this, this.showWaterMelon);
-                    });
+                    this.on(Laya.Event.CLICK, this, this.showWaterMelon);
                 }));
             }
             else {       
                 this.watermelon.knife.rotation = -Math.asin(this.watermelon.knife.width / Math.sqrt(this.watermelon.knife.height * this.watermelon.knife.height + this.watermelon.knife.width * this.watermelon.knife.width)) * 180 / Math.PI * 2;
-                this.watermelon.knife.x = -83 + this.watermelon.knife.width + 200;
-                this.watermelon.knife.y = 56 + this.watermelon.knife.height * 2 + this.watermelon.knife.height / this.watermelon.knife.width * 200;
+                this.watermelon.knife.x = 30 + this.watermelon.knife.width + 200;
+                this.watermelon.knife.y = 68 + this.watermelon.knife.height * 2 + this.watermelon.knife.height / this.watermelon.knife.width * 200;
+                Laya.SoundManager.playSound("res/audio/cut-watermelon.mp3", 1);
                 Laya.Tween.to(this.watermelon.knife, {x: this.watermelon.knife.x - 800, y: this.watermelon.knife.y - this.watermelon.knife.height / this.watermelon.knife.width * 800}, 300, null, Laya.Handler.create(this, function() {
                     this.watermelon.picture.visible = false;
-                    this.watermelon.pictureCuted1.visible = true;
+                    this.watermelon.pictureCuted.visible = true;
                     this.watermelon.cuted = true;
-                    this.watermelon.word.rotation = 30;
+                    this.watermelon.word.rotation = 40;
                     this.watermelon.word.visible = true;
                     this.watermelon.knife.visible = false;
-                    Laya.timer.once(150, this, function() {
-                        this.watermelon.pictureCuted1.visible = false;
-                        this.watermelon.pictureCuted2.visible = true;
-                        this.on(Laya.Event.CLICK, this, this.showWaterMelon);
-                    });
+                    this.on(Laya.Event.CLICK, this, this.showWaterMelon);
                 }));
             }
         }

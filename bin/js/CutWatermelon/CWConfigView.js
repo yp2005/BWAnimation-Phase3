@@ -4,6 +4,8 @@ var CWConfigView = /** @class */ (function () {
         this.configBox = configBox;
         this.hide();
         // 初始化配置页面元素
+        this.backgroundPic = configBox.getChildByName("backgroundPic");
+        this.startPic = configBox.getChildByName("startPic");
         this.fruitsPic = configBox.getChildByName("fruitsPic");
         this.words = configBox.getChildByName("words");
         this.submitBtn = configBox.getChildByName("submitBtn");
@@ -28,8 +30,10 @@ var CWConfigView = /** @class */ (function () {
     };
     // 初始化
     CWConfigView.prototype.init = function () {
-        this.fruitsPic.text = CutWatermelon.gameConfig.fruitsPic.left.notCuted + "," + CutWatermelon.gameConfig.fruitsPic.left.cuted1 + "," + CutWatermelon.gameConfig.fruitsPic.left.cuted2 + ";" +
-            CutWatermelon.gameConfig.fruitsPic.right.notCuted + "," + CutWatermelon.gameConfig.fruitsPic.right.cuted1 + "," + CutWatermelon.gameConfig.fruitsPic.right.cuted2;
+        this.backgroundPic.text = CutWatermelon.gameConfig.backgroundPic;
+        this.startPic.text = CutWatermelon.gameConfig.startPic;
+        this.fruitsPic.text = CutWatermelon.gameConfig.fruitsPic.left.notCuted + "," + CutWatermelon.gameConfig.fruitsPic.left.cuted + ";" +
+            CutWatermelon.gameConfig.fruitsPic.right.notCuted + "," + CutWatermelon.gameConfig.fruitsPic.right.cuted;
         var text = "";
         for (var _i = 0, _a = CutWatermelon.gameConfig.words; _i < _a.length; _i++) {
             var word = _a[_i];
@@ -44,7 +48,7 @@ var CWConfigView = /** @class */ (function () {
     };
     // 提交配置
     CWConfigView.prototype.submit = function () {
-        if (!this.words.text || !this.fruitsPic.text) {
+        if (!this.words.text || !this.fruitsPic.text || !this.backgroundPic.text || !this.startPic.text) {
             CutWatermelon.cutWatermelonMain.showTip("请完成所有配置项的配置！");
             return;
         }
@@ -65,22 +69,16 @@ var CWConfigView = /** @class */ (function () {
             for (var _b = 0, fs_1 = fs; _b < fs_1.length; _b++) {
                 var f = fs_1[_b];
                 if (f.indexOf("left") != -1) {
-                    if (f.indexOf("cuted1") != -1) {
-                        fruitsPic.left.cuted1 = f;
-                    }
-                    else if (f.indexOf("cuted2") != -1) {
-                        fruitsPic.left.cuted2 = f;
+                    if (f.indexOf("cuted") != -1) {
+                        fruitsPic.left.cuted = f;
                     }
                     else {
                         fruitsPic.left.notCuted = f;
                     }
                 }
                 else if (f.indexOf("right") != -1) {
-                    if (f.indexOf("cuted1") != -1) {
-                        fruitsPic.right.cuted1 = f;
-                    }
-                    else if (f.indexOf("cuted2") != -1) {
-                        fruitsPic.right.cuted2 = f;
+                    if (f.indexOf("cuted") != -1) {
+                        fruitsPic.right.cuted = f;
                     }
                     else {
                         fruitsPic.right.notCuted = f;
@@ -89,11 +87,14 @@ var CWConfigView = /** @class */ (function () {
             }
         }
         CutWatermelon.gameConfig = {
+            backgroundPic: this.backgroundPic.text,
+            startPic: this.startPic.text,
             gameModel: false,
             words: words,
             fruitsPic: fruitsPic
         };
         CutWatermelon.cutWatermelonMain.showTip("提交成功！");
+        CutWatermelon.cutWatermelonMain.bg.skin = "CutWatermelon/" + this.backgroundPic.text;
         this.hide();
     };
     return CWConfigView;

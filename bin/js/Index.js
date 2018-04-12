@@ -5,16 +5,16 @@ if (gameName == "watermelon") {
     //气球爆炸消失游戏
     var config = {
         gameModel: false,
+        backgroundPic: "mainBG.png",
+        startPic: "start.png",
         words: ["good", "apple", "bike", "computer"],
         fruitsPic: {
             left: {
-                cuted1: "watermelon-left-cuted1.png",
-                cuted2: "watermelon-left-cuted2.png",
+                cuted: "watermelon-left-cuted.png",
                 notCuted: "watermelon-left.png"
             },
             right: {
-                cuted1: "watermelon-right-cuted1.png",
-                cuted2: "watermelon-right-cuted2.png",
+                cuted: "watermelon-right-cuted.png",
                 notCuted: "watermelon-right.png"
             }
         }

@@ -8,16 +8,16 @@ var CutWatermelon = /** @class */ (function () {
         if (!config) {
             config = {
                 gameModel: false,
+                backgroundPic: "mainBG.png",
+                startPic: "start.png",
                 words: ["good", "apple", "bike", "computer"],
                 fruitsPic: {
                     left: {
-                        cuted1: "watermelon-left-cuted-1.png",
-                        cuted2: "watermelon-left-cuted-2.png",
+                        cuted: "watermelon-left-cuted.png",
                         notCuted: "watermelon-left.png"
                     },
                     right: {
-                        cuted1: "watermelon-right-cuted-1.png",
-                        cuted2: "watermelon-right-cuted-2.png",
+                        cuted: "watermelon-right-cuted.png",
                         notCuted: "watermelon-right.png"
                     }
                 }
@@ -34,7 +34,6 @@ var CutWatermelon = /** @class */ (function () {
         var resArray = [
             { url: "res/atlas/common.atlas", type: Laya.Loader.ATLAS },
             { url: "res/atlas/CutWatermelon.atlas", type: Laya.Loader.ATLAS },
-            { url: "CutWatermelon/mainBG.png", type: Laya.Loader.IMAGE },
             { url: "template/Text/TextBox.png", type: Laya.Loader.IMAGE },
             { url: "template/ButtonTab/btn_LargeTabButton_Middle.png", type: Laya.Loader.IMAGE }
         ];

@@ -7,16 +7,16 @@ if(gameName == "watermelon") {
     //气球爆炸消失游戏
     let config: any = {
         gameModel: false, // 是否游戏模式，游戏模式不显示配置按钮
+        backgroundPic: "mainBG.png", // 背景图
+        startPic: "start.png", // 开始图片
         words: ["good","apple","bike","computer"], // 单词
         fruitsPic: { // 水果图片
             left: {
-                cuted1: "watermelon-left-cuted1.png",
-                cuted2: "watermelon-left-cuted2.png",
+                cuted: "watermelon-left-cuted.png",
                 notCuted: "watermelon-left.png"
             },
             right:{
-                cuted1: "watermelon-right-cuted1.png",
-                cuted2: "watermelon-right-cuted2.png",
+                cuted: "watermelon-right-cuted.png",
                 notCuted: "watermelon-right.png"
             }
         }

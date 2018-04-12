@@ -1,6 +1,8 @@
 // 配置界面
 class CWConfigView {
     private configBox: Laya.Box; // 配置页面容器
+    private backgroundPic: Laya.TextInput; // 游戏背景图输入框
+    private startPic: Laya.TextInput; // 开始图片输入框
     private words: Laya.TextInput; // 单词输入框
     private fruitsPic: Laya.TextInput; // 水果图片输入框
     private submitBtn: Laya.Image; // 提交按钮
@@ -10,6 +12,8 @@ class CWConfigView {
         this.configBox = configBox;
         this.hide();
         // 初始化配置页面元素
+        this.backgroundPic = configBox.getChildByName("backgroundPic") as Laya.TextInput;
+        this.startPic = configBox.getChildByName("startPic") as Laya.TextInput;
         this.fruitsPic = configBox.getChildByName("fruitsPic") as Laya.TextInput;
         this.words = configBox.getChildByName("words") as Laya.TextInput;
         this.submitBtn = configBox.getChildByName("submitBtn") as Laya.Image;
@@ -37,8 +41,10 @@ class CWConfigView {
 
     // 初始化
     private init() {
-        this.fruitsPic.text = CutWatermelon.gameConfig.fruitsPic.left.notCuted + "," + CutWatermelon.gameConfig.fruitsPic.left.cuted1 + "," + CutWatermelon.gameConfig.fruitsPic.left.cuted2 + ";" +
-                                CutWatermelon.gameConfig.fruitsPic.right.notCuted + "," + CutWatermelon.gameConfig.fruitsPic.right.cuted1 + "," + CutWatermelon.gameConfig.fruitsPic.right.cuted2;
+        this.backgroundPic.text = CutWatermelon.gameConfig.backgroundPic;
+        this.startPic.text = CutWatermelon.gameConfig.startPic;
+        this.fruitsPic.text = CutWatermelon.gameConfig.fruitsPic.left.notCuted + "," + CutWatermelon.gameConfig.fruitsPic.left.cuted + ";" +
+                                CutWatermelon.gameConfig.fruitsPic.right.notCuted + "," + CutWatermelon.gameConfig.fruitsPic.right.cuted;
         let text = "";
         for(let word of CutWatermelon.gameConfig.words) {
             if(text == "") {
@@ -53,7 +59,7 @@ class CWConfigView {
 
     // 提交配置
     private submit() {
-        if(!this.words.text || !this.fruitsPic.text) {
+        if(!this.words.text || !this.fruitsPic.text || !this.backgroundPic.text! || !this.startPic.text) {
             CutWatermelon.cutWatermelonMain.showTip("请完成所有配置项的配置！");
             return;
         }
@@ -71,22 +77,16 @@ class CWConfigView {
             let fs = fp.split(",");
             for(let f of fs) {
                 if(f.indexOf("left") != -1) {
-                    if(f.indexOf("cuted1") != -1) {
-                        fruitsPic.left.cuted1 = f;
-                    }
-                    else if(f.indexOf("cuted2") != -1) {
-                        fruitsPic.left.cuted2 = f;
+                    if(f.indexOf("cuted") != -1) {
+                        fruitsPic.left.cuted = f;
                     }
                     else {
                         fruitsPic.left.notCuted = f;
                     }
                 }
                 else if(f.indexOf("right") != -1) {
-                    if(f.indexOf("cuted1") != -1) {
-                        fruitsPic.right.cuted1 = f;
-                    }
-                    else if(f.indexOf("cuted2") != -1) {
-                        fruitsPic.right.cuted2 = f;
+                    if(f.indexOf("cuted") != -1) {
+                        fruitsPic.right.cuted = f;
                     }
                     else {
                         fruitsPic.right.notCuted = f;
@@ -95,11 +95,14 @@ class CWConfigView {
             }
         }
         CutWatermelon.gameConfig = {
+            backgroundPic: this.backgroundPic.text,
+            startPic: this.startPic.text,
             gameModel: false,
             words: words,
             fruitsPic: fruitsPic
         }
         CutWatermelon.cutWatermelonMain.showTip("提交成功！");
+        CutWatermelon.cutWatermelonMain.bg.skin = "CutWatermelon/" + this.backgroundPic.text;
         this.hide();
     }
 }

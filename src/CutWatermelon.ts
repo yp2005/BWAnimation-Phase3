@@ -11,16 +11,16 @@ class CutWatermelon {
         if(!config) {
             config = {
                 gameModel: false, // 是否游戏模式，游戏模式不显示配置按钮
+                backgroundPic: "mainBG.png", // 背景图
+                startPic: "start.png", // 开始图片
                 words: ["good","apple","bike","computer"], // 单词
                 fruitsPic: { // 水果图片
                     left: {
-                        cuted1: "watermelon-left-cuted-1.png",
-                        cuted2: "watermelon-left-cuted-2.png",
+                        cuted: "watermelon-left-cuted.png",
                         notCuted: "watermelon-left.png"
                     },
                     right:{
-                        cuted1: "watermelon-right-cuted-1.png",
-                        cuted2: "watermelon-right-cuted-2.png",
+                        cuted: "watermelon-right-cuted.png",
                         notCuted: "watermelon-right.png"
                     }
                 }
@@ -39,7 +39,6 @@ class CutWatermelon {
         let resArray: any[] = [
             {url: "res/atlas/common.atlas", type: Laya.Loader.ATLAS},
             {url: "res/atlas/CutWatermelon.atlas", type: Laya.Loader.ATLAS},
-            {url: "CutWatermelon/mainBG.png", type: Laya.Loader.IMAGE},
             {url: "template/Text/TextBox.png", type: Laya.Loader.IMAGE},
             {url: "template/ButtonTab/btn_LargeTabButton_Middle.png", type: Laya.Loader.IMAGE}
         ];

@@ -17,16 +17,14 @@ var Watermelon = /** @class */ (function (_super) {
         _this.state = "left";
         _this.knife.visible = false;
         _this.picture.visible = false;
-        _this.pictureCuted2.visible = false;
+        _this.pictureCuted.visible = false;
         _this.word.visible = false;
         _this.x = (1024 - _this.width) / 2;
         _this.y = (768 - _this.height) / 2;
         _this.picture.centerX = 0;
         _this.picture.centerY = 0;
-        _this.pictureCuted1.centerX = 0;
-        _this.pictureCuted1.centerY = 0;
-        _this.pictureCuted2.centerX = 0;
-        _this.pictureCuted2.centerY = 0;
+        _this.pictureCuted.centerX = 0;
+        _this.pictureCuted.centerY = 0;
         return _this;
     }
     return Watermelon;
