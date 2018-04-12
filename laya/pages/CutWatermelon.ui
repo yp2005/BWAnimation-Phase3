@@ -159,7 +159,7 @@
                 {
                     "x":30,
                     "type":"TextInput",
-                    "props":{"y":73,"x":642,"width":286,"name":"fruitsPic","height":31,"fontSize":18,"font":"FF","color":"#3b3232"},
+                    "props":{"y":69,"x":642,"width":286,"name":"fruitsPic","height":31,"fontSize":18,"font":"FF","color":"#3b3232"},
                     "nodeParent":4,
                     "label":"TextInput(fruitsPic)",
                     "isDirectory":false,
