@@ -68,7 +68,7 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
                 this.watermelon.word.pivotY = 33;
                 
                 this.watermelon.word.x = this.watermelon.width / 2;
-                this.watermelon.word.y = 190;
+                this.watermelon.word.y = 180;
             }
             else { // 没有单词了结束游戏
                 this.replayBtn.skin = "common/replay-abled.png";
@@ -85,7 +85,7 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
                 this.watermelon.word.pivotX = this.watermelon.word.width / 2;
                 this.watermelon.word.pivotY = 33;
                 this.watermelon.word.x = this.watermelon.width / 2;
-                this.watermelon.word.y = 186;
+                this.watermelon.word.y = 180;
                 return;
             }
             // 随机一个位置
@@ -133,7 +133,7 @@ class CutWatermelonMain extends ui.CutWatermelonUI {
                     this.watermelon.picture.visible = false;
                     this.watermelon.pictureCuted.visible = true;
                     this.watermelon.cuted = true;
-                    this.watermelon.word.rotation = 40;
+                    this.watermelon.word.rotation = 52;
                     this.watermelon.word.visible = true;
                     this.watermelon.knife.visible = false;
                     this.on(Laya.Event.CLICK, this, this.showWaterMelon);
